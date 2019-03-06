@@ -40,12 +40,18 @@ public class USACO{
     e = inf.nextInt();
     n = inf.nextInt();
     lake = new int[r][c];
+    ins = new int[n][3];
     for(int i=0;i<r;i++){
       for(int j=0;j<c;j++){
         lake[i][j]=inf.nextInt();
       }
     }
-    System.out.println(arrayToString(lake));
+    for(int i=0;i<n;i++){
+      for(int j=0;j<3;j++){
+        ins[i][j]=inf.nextInt();
+      }
+    }
+    System.out.println(arrayToString(ins));
     return 0;
   }
 }
