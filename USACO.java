@@ -9,12 +9,13 @@ public class USACO{
 
     }
   }
-  private static String arrayToString(char[][] ary){
+  private static String arrayToString(int[][] ary){
     String ans="";
     for(int i=0;i<ary.length;i++){
       for(int j=0;j<ary[0].length;j++){
         if(ary[i][j]!='\n'){
           ans+=ary[i][j];
+          ans+=' ';
         }
         else{
           ans+='n';
@@ -41,7 +42,7 @@ public class USACO{
     lake = new int[r][c];
     for(int i=0;i<r;i++){
       for(int j=0;j<c;j++){
-        int[i][j]=inf.nextInt();
+        lake[i][j]=inf.nextInt();
       }
     }
     System.out.println(arrayToString(lake));
