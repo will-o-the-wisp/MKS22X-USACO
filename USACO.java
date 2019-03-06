@@ -51,6 +51,26 @@ public class USACO{
         ins[i][j]=inf.nextInt();
       }
     }
+    for(int i=0;i<n;i++){
+      int rs=ins[n][0];
+      int cs=ins[n][1];
+      int ds=ins[n][2];
+      int max=lake[rs][cs];
+      for(int j=0;j<3;j++){
+        for(int k=0;k<3;k++){
+          if(lake[rs+j][rs+k]>max){
+            max=lake[rs+j][rs+k];
+          }
+        }
+      }
+      for(int j=0;j<3;j++){
+        for(int k=0;k<3;k++){
+          if(lake[rs+j][rs+k]>max-ds){
+            lake[rs+j][rs+k]=max-ds;
+          }
+        }
+      }
+    }
     System.out.println(arrayToString(ins));
     return 0;
   }
