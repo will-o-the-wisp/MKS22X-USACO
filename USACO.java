@@ -78,4 +78,7 @@ public class USACO{
     }
     return totaldepth*72*72;
   }
+  public static int silver(String filename) throws FileNotFoundException{
+    return 0;
+  }
 }
