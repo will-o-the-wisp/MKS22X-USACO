@@ -3,7 +3,7 @@ import java.util.*;
 public class USACO{
   public static void main(String[] args){
     try{
-      bronze("makelake.1.in");
+      System.out.println(bronze("makelake.0.in"));
     }
     catch(FileNotFoundException e){
 
@@ -13,14 +13,8 @@ public class USACO{
     String ans="";
     for(int i=0;i<ary.length;i++){
       for(int j=0;j<ary[0].length;j++){
-        if(ary[i][j]!='\n'){
           ans+=ary[i][j];
           ans+=' ';
-        }
-        else{
-          ans+='n';
-          ans+=ary[i][j];
-        }
       }
       ans+='\n';
     }
@@ -46,12 +40,42 @@ public class USACO{
         lake[i][j]=inf.nextInt();
       }
     }
+
     for(int i=0;i<n;i++){
       for(int j=0;j<3;j++){
         ins[i][j]=inf.nextInt();
       }
     }
-    System.out.println(arrayToString(ins));
-    return 0;
+
+    for(int i=0;i<n;i++){
+      int rs=ins[i][0]-1;
+      int cs=ins[i][1]-1;
+      int ds=ins[i][2];
+      int max=lake[rs][cs];
+      for(int j=0;j<3;j++){
+        for(int k=0;k<3;k++){
+          if((lake[rs+j][cs+k])>max){
+            max=lake[rs+j][cs+k];
+          }
+        }
+      }
+      for(int j=0;j<3;j++){
+        for(int k=0;k<3;k++){
+          if(lake[rs+j][cs+k]>max-ds){
+            lake[rs+j][cs+k]=max-ds;
+          }
+        }
+      }
+    }
+    int totaldepth=0;
+    for(int i=0;i<r;i++){
+      for(int j=0;j<c;j++){
+        lake[i][j]=e-lake[i][j];
+        if(lake[i][j]>0){
+          totaldepth+=lake[i][j];
+        }
+      }
+    }
+    return totaldepth*72*72;
   }
 }
