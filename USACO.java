@@ -102,6 +102,18 @@ public class USACO{
         }
       }
     }
+    r1=inf.nextInt();
+    c1=inf.nextInt();
+    r2=inf.nextInt();
+    c2=inf.nextInt();
     return 0;
+  }
+  private static int[][] nextPasture(int[][] ary){
+    try{
+
+    }
+    catch(ArrayIndexOutOfBoundsException e){
+      
+    }
   }
 }
