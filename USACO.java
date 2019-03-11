@@ -87,6 +87,7 @@ public class USACO{
     int c1;
     int r2;
     int c2;
+    String s;
     File text=new File(filename);
     Scanner inf = new Scanner(text);
     r = inf.nextInt();
@@ -94,8 +95,11 @@ public class USACO{
     t = inf.nextInt();
     pasture = new int[r][c];
     for(int i=0;i<r;i++){
+      s = inf.next();
       for(int j=0;j<c;j++){
-        
+        if(s.charAt(j)=='*'){
+          pasture[i][j]=-1;
+        }
       }
     }
     return 0;
