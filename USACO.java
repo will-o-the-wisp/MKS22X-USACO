@@ -106,44 +106,51 @@ public class USACO{
     c1=inf.nextInt();
     r2=inf.nextInt();
     c2=inf.nextInt();
-    System.out.println(arrayToString(pasture));
-    pasture[r1][c1]=1;
+    pasture[r1-1][c1-1]=1;
+    //System.out.println(arrayToString(pasture));
     for(int k=0;k<t;k++){
       int[][] next=nextPasture(pasture);
-      System.out.println(arrayToString(next));
+      //System.out.println(arrayToString(next));
       for(int i=0;i<r;i++){
         for(int j=0;j<c;j++){
-          pasture[r][c]=next[r][c];
+          pasture[i][j]=next[i][j];
         }
       }
     }
-    return pasture[r2][c2];
+    return pasture[r2-1][c2-1];
   }
   private static int[][] nextPasture(int[][] ary){
     int[][] ans= new int[ary.length][ary[0].length];
     for(int i=0;i<ary.length;i++){
       for(int j=0;j<ary[0].length;j++){
         ans[i][j]=ary[i][j];
-        try{
-          if(ary[i][j+1]>0){
-            ans[i][j]+=ary[i][j+1];
+        if(ans[i][j]!=-1){
+          if(ans[i][j]==0){
+            try{
+              if(ary[i][j+1]>0){
+                ans[i][j]+=ary[i][j+1];
+              }
+            }catch(ArrayIndexOutOfBoundsException e){}
+            try{
+              if(ary[i][j-1]>0){
+                ans[i][j]+=ary[i][j-1];
+              }
+            }catch(ArrayIndexOutOfBoundsException e){}
+            try{
+              if(ary[i+1][j]>0){
+                ans[i][j]+=ary[i+1][j];
+              }
+            }catch(ArrayIndexOutOfBoundsException e){}
+            try{
+              if(ary[i-1][j]>0){
+                ans[i][j]+=ary[i-1][j];
+              }
+            }catch(ArrayIndexOutOfBoundsException e){}
           }
-        }catch(ArrayIndexOutOfBoundsException e){}
-        try{
-          if(ary[i][j-1]>0){
-            ans[i][j]+=ary[i][j-1];
-          }
-        }catch(ArrayIndexOutOfBoundsException e){}
-        try{
-          if(ary[i+1][j]>0){
-            ans[i][j]+=ary[i+1][j];
-          }
-        }catch(ArrayIndexOutOfBoundsException e){}
-        try{
-          if(ary[i-1][j]>0){
-            ans[i][j]+=ary[i-1][j];
-          }
-        }catch(ArrayIndexOutOfBoundsException e){}
+        else{
+          ans[i][j]=0;
+        }
+        }
       }
     }
     return ans;
